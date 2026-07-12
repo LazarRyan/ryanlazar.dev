@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan Lazar — Data &amp; AI Engineer</title>
+  <meta name="description" content="Data & AI engineer building agentic systems on enterprise data platforms — Oracle AI Database, MCP multi-agent systems, clinical ML, and cloud infrastructure as code.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ryanlazar.dev/">
+  <meta property="og:title" content="Ryan Lazar — Data & AI Engineer">
+  <meta property="og:description" content="I build data platforms and the AI agents that run on them.">
+  <meta property="og:image" content="https://ryanlazar.dev/assets/answer-table.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="wordmark">Ryan Lazar</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Data &amp; AI Engineer</p>
+      <h1>I build data platforms<br>and the AI agents<br>that run on them.</h1>
+      <p class="lede">
+        From Terraform-provisioned cloud infrastructure to agentic systems that reason
+        over live enterprise data — I work the full stack and ship things you can
+        actually click on. Currently focused on the Oracle data ecosystem.
+      </p>
+      <div class="hero-links">
+        <a class="button primary" href="#work">See the work</a>
+        <a class="button" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <h2 class="section-title reveal">Selected work</h2>
+
+      <article class="flagship reveal">
+        <div class="flagship-text">
+          <p class="project-kicker">Flagship — live demo</p>
+          <h3>AskMyData</h3>
+          <p>
+            A conversational analytics agent where everything agentic lives inside the
+            database: in-database vector search over supplier contracts, natural-language
+            SQL over live order data, and persistent agent memory in plain SQL tables.
+            Claude reasons in a visible tool-use loop, streamed step-by-step to the
+            browser. Provisioned end-to-end on OCI with Terraform and served over HTTPS.
+          </p>
+          <ul class="tags">
+            <li>Oracle AI Database 26ai</li><li>Claude API</li><li>FastAPI</li>
+            <li>Terraform</li><li>OCI</li>
+          </ul>
+          <div class="project-links">
+            <a class="button primary" href="https://askmydata.ryanlazar.dev" target="_blank" rel="noopener">Live demo</a>
+            <a class="button" href="https://github.com/LazarRyan/askmydata" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <a class="flagship-media" href="https://askmydata.ryanlazar.dev" target="_blank" rel="noopener">
+          <img src="assets/answer-table.webp" alt="AskMyData answering a supply-chain question with a ranked table of suppliers" loading="lazy">
+        </a>
+      </article>
+
+      <div class="grid">
+        <article class="card reveal">
+          <h3>Autonomous Trader</h3>
+          <p>
+            Autonomous paper-trading system blending momentum signals with
+            congressional-disclosure and news-sentiment following. A deterministic risk
+            scorer auto-executes low-risk trades and routes the rest to a human approval
+            queue — position caps, loss halts, and a kill switch apply regardless.
+            229 regression tests, each built from a real observed failure.
+          </p>
+          <ul class="tags"><li>Anthropic API</li><li>Alpaca</li><li>Supabase</li><li>Python</li></ul>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/LazarRyan/AutonomousTrader" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <h3>Investment Monitor</h3>
+          <p>
+            Autonomous two-agent system over the Model Context Protocol: one agent
+            gathers live market data, a deterministic engine grades portfolio risk
+            (beta, Sharpe, concentration), and a second agent writes a validated
+            plain-language daily briefing. Every run audit-logged.
+          </p>
+          <ul class="tags"><li>MCP</li><li>Anthropic API</li><li>Supabase</li><li>Alpaca</li></ul>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/LazarRyan/MCPStockMonitor" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <h3>FHIR Risk Stratification</h3>
+          <p>
+            Clinical data pipeline that parses FHIR R4 patient bundles, engineers
+            evidence-based features across SNOMED and ICD-10 coding, and trains a
+            30-day hospital-readmission risk model — served through a
+            USWDS-styled dashboard.
+          </p>
+          <ul class="tags"><li>HL7 FHIR</li><li>scikit-learn</li><li>Streamlit</li><li>Healthcare</li></ul>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/LazarRyan/fhir-risk-stratification" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <h3>Investment Tracker</h3>
+          <p>
+            Full-stack portfolio tracker: Next.js frontend with Supabase auth and
+            row-level security, Python microservices for live market data, AI-generated
+            analysis, and professional PDF reporting.
+          </p>
+          <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>FastAPI</li><li>Supabase</li></ul>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/LazarRyan/investment-tracker" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <h3>NYC Taxi Analytics</h3>
+          <p>
+            ETL and analytics over 3.6 million NYC taxi trips: Airflow-orchestrated
+            PySpark jobs feeding PostgreSQL, explored through an interactive dashboard
+            of maps, fares, and trip metrics.
+          </p>
+          <ul class="tags"><li>Airflow</li><li>PySpark</li><li>PostgreSQL</li><li>Next.js</li></ul>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/LazarRyan/NYCTaxiData" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="section-title reveal">About</h2>
+      <div class="about-body reveal">
+        <p>
+          I'm an engineer focused on the seam between data infrastructure and applied
+          AI. I like building things end to end: provisioning the cloud with code,
+          modeling the data, wiring up the agents, and shipping an interface people can
+          actually use.
+        </p>
+        <p>
+          Recent work spans agentic analytics on Oracle AI Database, multi-agent systems
+          on the Model Context Protocol, and clinical machine learning on HL7 FHIR. The
+          common thread: real systems, deployed and demonstrable, not notebooks.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <h2 class="footer-title reveal">Let's talk.</h2>
+    <div class="footer-links reveal">
+      <a href="mailto:lazar.ryan123@gmail.com">lazar.ryan123@gmail.com</a>
+      <a href="https://github.com/LazarRyan" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ryan-lazar123/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+    <p class="colophon">Hand-built with plain HTML &amp; CSS · Deployed on Cloudflare Pages</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
