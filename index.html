@@ -42,12 +42,40 @@
       </p>
       <div class="hero-links">
         <a class="button primary" href="#work">See the work</a>
-        <a class="button" href="assets/resume.pdf?v=202607" target="_blank" rel="noopener">Resume</a>
+        <a class="button" href="assets/resume.pdf?v=20260728" target="_blank" rel="noopener">Resume</a>
       </div>
     </section>
 
     <section id="work" class="work">
       <h2 class="section-title reveal">Selected work</h2>
+
+      <article class="flagship reveal">
+        <div class="flagship-text">
+          <p class="project-kicker">Flagship — live demo</p>
+          <h3>FleetSentinel</h3>
+          <p>
+            Plant-level telemetry for a hall of liquid-cooled AI compute racks. Streaming
+            anomaly detection (EWMA z-score, CUSUM drift, isolation forest) feeds a
+            deterministic severity engine, a robust trend forecaster predicts
+            <em>when</em> a signal will breach its hard limit — "coolant flow breaches in
+            ~22 min" — and incidents roll up from rack to CDU loop to facility PUE and
+            capacity headroom, inferring shared cooling failures from correlated racks.
+            Claude writes the operator shift briefing; the grading path stays ML-free so
+            every page is explainable.
+          </p>
+          <ul class="tags">
+            <li>Python</li><li>scikit-learn</li><li>Time-series forecasting</li>
+            <li>Claude API</li><li>FastAPI</li><li>Podman</li>
+          </ul>
+          <div class="project-links">
+            <a class="button primary" href="https://fleetsentinel.ryanlazar.dev" target="_blank" rel="noopener">Live demo</a>
+            <a class="button" href="https://github.com/LazarRyan/fleet-sentinel" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <a class="flagship-media" href="https://fleetsentinel.ryanlazar.dev" target="_blank" rel="noopener">
+          <img src="assets/fleetsentinel.webp" alt="FleetSentinel dashboard showing a data-center hall map with rack severity, time-to-breach predictions, and an operator shift briefing" loading="lazy">
+        </a>
+      </article>
 
       <article class="flagship reveal">
         <div class="flagship-text">
@@ -70,7 +98,7 @@
           </div>
         </div>
         <a class="flagship-media" href="https://askmydata.ryanlazar.dev" target="_blank" rel="noopener">
-          <img src="assets/answer-table.webp" alt="AskMyData answering a supply-chain question with a ranked table of suppliers" loading="lazy">
+          <img src="assets/askmydata.webp" alt="AskMyData answering a penalty-claims question: a ranked table of claimable amounts by supplier, with a caveat that most Type A claims are already time-barred under the contract" loading="lazy">
         </a>
       </article>
 
@@ -117,18 +145,6 @@
           </div>
         </article>
 
-        <article class="card reveal">
-          <h3>NYC Taxi Analytics</h3>
-          <p>
-            ETL and analytics over 3.6 million NYC taxi trips: Airflow-orchestrated
-            PySpark jobs feeding PostgreSQL, explored through an interactive dashboard
-            of maps, fares, and trip metrics.
-          </p>
-          <ul class="tags"><li>Airflow</li><li>PySpark</li><li>PostgreSQL</li><li>Next.js</li></ul>
-          <div class="project-links">
-            <a class="text-link" href="https://github.com/LazarRyan/NYCTaxiData" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -142,10 +158,12 @@
           actually use.
         </p>
         <p>
-          Recent work spans agentic analytics on Oracle AI Database, multi-agent systems
-          on the Model Context Protocol, and autonomous trading with deterministic risk
-          controls. The common thread: real systems, deployed and demonstrable, not
-          notebooks.
+          Recent work spans plant-level telemetry and failure prediction for AI
+          data-center infrastructure, agentic analytics on Oracle AI Database,
+          multi-agent systems on the Model Context Protocol, and autonomous trading with
+          deterministic risk controls. The common thread: real systems, deployed and
+          demonstrable, not notebooks — and a bias toward keeping the decision path
+          explainable even when the detection path uses ML.
         </p>
       </div>
     </section>
@@ -157,7 +175,7 @@
       <a href="mailto:lazar.ryan123@gmail.com">lazar.ryan123@gmail.com</a>
       <a href="https://github.com/LazarRyan" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/ryan-lazar123/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="assets/resume.pdf?v=202607" target="_blank" rel="noopener">Resume</a>
+      <a href="assets/resume.pdf?v=20260728" target="_blank" rel="noopener">Resume</a>
     </div>
     <p class="colophon">Hand-built with plain HTML &amp; CSS · Deployed on Cloudflare Pages</p>
   </footer>
