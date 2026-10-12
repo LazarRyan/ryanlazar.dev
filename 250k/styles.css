@@ -853,17 +853,17 @@ button { font: inherit; color: inherit; }
 .footer__top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; }
 .footer__line { font-family: var(--f-display); font-weight: 700; font-stretch: 80%; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.03em; }
 .footer__actions { display: flex; flex-wrap: wrap; flex-shrink: 0; gap: 10px; }
-.footer__giant { position: relative; height: 20vw; margin-top: clamp(48px, 7vw, 80px); overflow: hidden; text-align: center; }
+.footer__giant { position: relative; margin-block: clamp(48px, 7vw, 80px) clamp(28px, 4vw, 48px); text-align: center; }
 .footer__giant p {
   position: relative;
   font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
-  font-size: 27vw; line-height: 0.74; letter-spacing: -0.05em; text-transform: uppercase; white-space: nowrap;
-  padding-top: 0.2em;
-  background: linear-gradient(180deg, #fff2dc 10%, #ffb35f 45%, #ff5a3c 75%);
+  font-size: 24vw; line-height: 0.82; letter-spacing: -0.05em; text-transform: uppercase; white-space: nowrap;
+  padding-block: 0.08em 0.06em;
+  background: linear-gradient(180deg, #fff2dc 10%, #ffb35f 50%, #ff5a3c 92%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .footer__sun {
-  position: absolute; left: 50%; bottom: -26vw; width: 44vw; aspect-ratio: 1; margin-left: -22vw; border-radius: 50%;
+  position: absolute; left: 50%; bottom: -24vw; width: 44vw; aspect-ratio: 1; margin-left: -22vw; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(255, 160, 80, 0.45), rgba(255, 100, 60, 0.12) 60%, transparent 100%);
 }
 .footer__fine {
