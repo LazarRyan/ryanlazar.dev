@@ -429,19 +429,6 @@
     }
   }
 
-  // ---------- Giving picker ----------
-  const picker = $('[data-picker]');
-  if (picker && !reduceMotion) {
-    let current = Number($('input:checked', picker).value);
-    picker.addEventListener('change', (e) => {
-      if (e.target.name !== 'pace') return;
-      const to = Number(e.target.value);
-      const amount = $(`[data-amount="${to}"]`, picker);
-      if (amount) countUp(amount, current, to, 500);
-      current = to;
-    });
-  }
-
   // ---------- Share ----------
   const toastEl = $('[data-toast]');
   let toastTimer;
