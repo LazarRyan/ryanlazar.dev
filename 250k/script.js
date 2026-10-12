@@ -437,8 +437,7 @@
       if (e.target.name !== 'pace') return;
       const to = Number(e.target.value);
       const amount = $(`[data-amount="${to}"]`, picker);
-      amount.dataset.prefix = '$';
-      countUp(amount, current, to, 650);
+      if (amount) countUp(amount, current, to, 500);
       current = to;
     });
   }

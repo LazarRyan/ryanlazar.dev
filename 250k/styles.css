@@ -772,7 +772,7 @@ button { font: inherit; color: inherit; }
   box-shadow: inset 0 0 0 1px var(--line-2), 0 50px 100px -40px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
-.picker__seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 6px; border: 0; border-radius: 26px; background: rgba(0, 0, 0, 0.35); }
+.picker__seg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 6px; border: 0; border-radius: 26px; background: rgba(0, 0, 0, 0.35); }
 .picker__seg input { position: absolute; opacity: 0; pointer-events: none; }
 .picker__seg label {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
@@ -787,17 +787,23 @@ button { font: inherit; color: inherit; }
 .picker__seg input:checked + label span { color: rgba(28, 18, 11, 0.72); }
 .picker__seg input:focus-visible + label { outline: 3px solid var(--sun); outline-offset: 2px; }
 .picker__stage { padding: clamp(30px, 5vw, 48px) 0 clamp(22px, 3vw, 30px); }
-.picker__view { display: none; }
+/* Views share one grid cell so switching never changes the card's height. */
+.picker__views { display: grid; align-items: center; }
+.picker__view { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity 0.3s; }
+.picker:has(#pace-0:checked) .picker__view--0,
 .picker:has(#pace-1:checked) .picker__view--1,
 .picker:has(#pace-2:checked) .picker__view--2,
-.picker:has(#pace-3:checked) .picker__view--3 { display: block; }
-@supports not selector(:has(*)) { .picker__view--1 { display: block; } }
+.picker:has(#pace-3:checked) .picker__view--3 { visibility: visible; opacity: 1; }
+@supports not selector(:has(*)) { .picker__view--0 { visibility: visible; opacity: 1; } }
 .picker__amount {
   font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
   font-size: clamp(4.6rem, 16vw, 9.5rem); line-height: 0.88; letter-spacing: -0.045em; font-variant-numeric: tabular-nums;
   background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+.picker__amount small { margin-left: 0.06em; font-size: 0.32em; letter-spacing: -0.01em; }
+.picker__amount--words { max-width: 11ch; margin-inline: auto; font-size: clamp(3rem, 9vw, 5.6rem); line-height: 0.92; text-wrap: balance; }
 .picker__math { margin-top: 12px; font-weight: 500; color: var(--fg-2); }
+@media (max-width: 560px) { .picker__seg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .picker__suns { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
 .picker__suns i { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out); }
 .picker:has(#pace-1:checked) .picker__suns i:nth-child(-n+1),
