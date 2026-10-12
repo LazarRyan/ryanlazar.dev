@@ -8,9 +8,8 @@
   const fmt = (v, decimals = 0, prefix = '') =>
     prefix + v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 
-  // ---------- Optional media ----------
-  // Photo slots and the hero video only switch on if their files actually load,
-  // so the page looks finished with or without them.
+  // ---------- Photos ----------
+  // A photo that fails to load is removed, so the layout falls back cleanly.
   $$('[data-photo-slot]').forEach((slot) => {
     const img = $('img', slot);
     if (!img) return;
@@ -23,20 +22,27 @@
     }
   });
 
-  const hero = $('[data-hero]');
-  const video = $('[data-hero-video]');
-  if (video) {
-    const show = () => {
-      hero.classList.add('has-video');
-      if (reduceMotion) video.pause();
+  // ---------- Training reel ----------
+  // Loads only when scrolled near, plays while on screen, and pauses off screen.
+  // Reduced motion: it starts paused on its poster frame.
+  const reel = $('[data-reel]');
+  if (reel) {
+    const toggle = $('[data-reel-toggle]');
+    let pausedByViewer = reduceMotion;
+    const setState = (playing) => {
+      toggle.dataset.state = playing ? 'playing' : 'paused';
+      toggle.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
     };
-    const drop = () => video.remove();
-    if (video.readyState >= 2) show();
-    else if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) drop();
-    else {
-      video.addEventListener('loadeddata', show, { once: true });
-      $('source', video)?.addEventListener('error', drop, { once: true });
-      video.addEventListener('error', drop, { once: true });
+    const play = () => reel.play().then(() => setState(true), () => setState(false));
+    toggle.addEventListener('click', () => {
+      pausedByViewer = !reel.paused;
+      if (pausedByViewer) { reel.pause(); setState(false); } else play();
+    });
+    if (hasIO) {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { if (!pausedByViewer) play(); }
+        else if (!reel.paused) { reel.pause(); setState(false); }
+      }, { threshold: 0.35 }).observe(reel);
     }
   }
 
@@ -179,6 +185,7 @@
   }
 
   // ---------- One scroll loop for nav, hero parallax, words and race ----------
+  const hero = $('[data-hero]');
   const nav = $('[data-nav]');
   const ring = $('[data-km-ring]');
   const navKm = $('[data-km]');

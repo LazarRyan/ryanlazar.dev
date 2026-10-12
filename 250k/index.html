@@ -68,10 +68,6 @@
       <div class="hero__sky" aria-hidden="true"></div>
       <div class="hero__stars" data-stars="90" aria-hidden="true"></div>
       <div class="hero__sun" aria-hidden="true"></div>
-      <!-- Optional: drop a muted loop at media/hero.mp4 and it plays behind the title. -->
-      <video class="hero__video" data-hero-video autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="media/hero.mp4" type="video/mp4">
-      </video>
 
       <svg class="hero__dune hero__dune--far" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,170 C200,130 380,120 560,150 C740,180 900,110 1100,104 C1260,100 1360,140 1440,130 V400 H0Z"/></svg>
       <svg class="hero__dune hero__dune--mid" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,232 C220,192 420,184 640,216 C860,248 1020,188 1220,182 C1330,179 1400,198 1440,206 V400 H0Z"/></svg>
@@ -126,18 +122,22 @@
         <p class="label" data-reveal><span>01</span>The story</p>
         <h2 class="display" id="story-title" data-reveal>Hi, I’m <em>Jonyull.</em></h2>
 
-        <p class="statement" data-words>I’m a health and human performance coach on the Windward side of Oʻahu, and I’ve built my career around one idea: the body and mind can do far more than people think when they’re trained with a plan and with care.</p>
+        <div class="story__layout">
+          <figure class="story__photo" data-photo-slot data-photo data-reveal>
+            <img src="images/jonyull.jpg" alt="Black-and-white portrait of Jonyull Kosinski" width="1000" height="1500" decoding="async">
+            <figcaption>Jonyull Kosinski</figcaption>
+          </figure>
+          <div class="story__main">
+            <p class="statement" data-words>I’m a health and human performance coach on the Windward side of Oʻahu, and I’ve built my career around one idea: the body and mind can do far more than people think when they’re trained with a plan and with care.</p>
 
-        <div class="story__turn">
-          <p class="pivot" data-reveal>In August 2024 I lost my mom, Sharon Gwendolyn Kosinski, to laryngeal cancer.</p>
-          <p class="story__body" data-reveal style="--d:120ms">In April 2027 I’ll line up at the start of the Marathon des Sables: 250 kilometers across the Sahara Desert, self-supported, carrying everything I need on my back. I’m running it with her, and I’m raising money to support cancer rehabilitation care for people who are fighting for their strength and their agency.</p>
+            <div class="story__turn">
+              <p class="pivot" data-reveal>In August 2024 I lost my mom, Sharon Gwendolyn Kosinski, to laryngeal cancer.</p>
+              <p class="story__body" data-reveal style="--d:120ms">In April 2027 I’ll line up at the start of the Marathon des Sables: 250 kilometers across the Sahara Desert, self-supported, carrying everything I need on my back. I’m running it with her, and I’m raising money to support cancer rehabilitation care for people who are fighting for their strength and their agency.</p>
+            </div>
+          </div>
         </div>
 
         <div class="facts">
-          <!-- Optional: drop a portrait at images/jonyull.jpg and it becomes the first tile. -->
-          <figure class="fact fact--photo" data-photo-slot data-photo data-reveal>
-            <img src="images/jonyull.jpg" alt="Jonyull Kosinski" width="800" height="1000" decoding="async">
-          </figure>
           <div class="fact" data-reveal>
             <p class="fact__label">Home</p>
             <p class="fact__value">Windward Oʻahu, Hawaiʻi</p>
@@ -186,9 +186,9 @@
         <p class="label label--center" data-reveal><span>02</span>Why I’m running</p>
 
         <div class="sharon__portrait" data-photo-slot data-reveal>
-          <!-- Optional: drop a photo of Sharon at images/sharon.jpg and it replaces the moon. -->
-          <figure class="sharon__photo" data-photo>
-            <img src="images/sharon.jpg" alt="Sharon Gwendolyn Kosinski" width="800" height="1000" decoding="async">
+          <figure class="sharon__print" data-photo>
+            <img src="images/sharon.jpg" alt="Sharon Gwendolyn Kosinski sipping a milkshake" width="635" height="420" decoding="async">
+            <figcaption>Mom</figcaption>
           </figure>
           <div class="sharon__moon" aria-hidden="true"></div>
         </div>
@@ -278,6 +278,20 @@
         <p class="lead runner__lead" data-reveal>I’ve spent my career studying and coaching human performance, including a year of research in cancer exercise rehabilitation. Here’s what I’m bringing to the start line.</p>
 
         <div class="bento" data-spotlight>
+          <article class="tile tile--reel" data-reveal>
+            <video class="reel__video" data-reel muted loop playsinline preload="none" poster="media/training.jpg" aria-label="Jonyull deadlifting in the gym">
+              <source src="media/training.mp4" type="video/mp4">
+            </video>
+            <div class="reel__top">
+              <span class="reel__chip">In training</span>
+              <button class="reel__toggle" type="button" data-reel-toggle data-state="paused" aria-label="Play video">
+                <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+              </button>
+            </div>
+            <a class="reel__handle" href="https://www.instagram.com/jonyullfit/" target="_blank" rel="noopener">@jonyullfit <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </article>
+
           <article class="tile tile--vo2" data-reveal>
             <p class="tile__label">VO₂ max · lab-tested</p>
             <div class="gauge">
