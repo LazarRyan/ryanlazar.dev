@@ -51,6 +51,7 @@ body::after {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 img, svg, video { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 a { color: inherit; }
 h1, h2, h3, p, ol, ul, figure, blockquote { margin: 0; }
 ol, ul { padding: 0; list-style: none; }
@@ -623,7 +624,6 @@ button { font: inherit; color: inherit; }
   font-style: normal; font-size: 0.8rem; font-weight: 600;
 }
 .countdown::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.countdown[hidden] { display: none; }
 
 .res__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
 .res__total { margin-top: 10px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%; font-size: clamp(3.4rem, 6vw, 4.8rem); line-height: 0.85; letter-spacing: -0.045em; }
@@ -679,7 +679,81 @@ button { font: inherit; color: inherit; }
   .list--grid li, .list--grid li:first-child { padding-top: 14px; border-top: 1px solid var(--line); }
 }
 
-/* ---------- 05 Give ---------- */
+/* ---------- 05 Race day: countdowns + live tracking ---------- */
+.raceday .display { margin-bottom: clamp(36px, 5vw, 56px); }
+.clocks { display: grid; gap: 12px; }
+@media (min-width: 900px) {
+  .clocks { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+  .clocks:has(> .clock[hidden]) { grid-template-columns: 1fr; }
+}
+.clock, .tracker {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 22px;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.clock--main { background: radial-gradient(120% 90% at 100% 0%, rgba(255, 120, 60, 0.22), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); }
+.clock__eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-2); }
+.clock__digits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(6px, 1.2vw, 12px); }
+.clock__digits div {
+  display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  padding: clamp(12px, 1.6vw, 18px) clamp(10px, 1.4vw, 18px);
+  border-radius: 18px; background: rgba(0, 0, 0, 0.28); box-shadow: inset 0 0 0 1px var(--line);
+}
+.clock__digits b {
+  font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  font-size: clamp(2.5rem, 6.6vw, 5.4rem); line-height: 0.85; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+}
+.clock--main .clock__digits b { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.clock:not(.clock--main) .clock__digits b { font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
+.clock__digits span { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-2); }
+.clock__live { display: none; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--sun); }
+.clock.is-live .clock__digits { display: none; }
+.clock.is-live .clock__live { display: block; }
+.clock__when { display: flex; flex-direction: column; gap: 4px; margin-top: auto; }
+.clock__when strong { font-family: var(--f-display); font-size: 1.22rem; font-weight: 700; letter-spacing: -0.01em; }
+.clock__when > span { display: flex; flex-direction: column; gap: 2px; color: var(--fg-2); font-size: 0.95rem; }
+
+.tracker { margin-top: 12px; }
+.tracker__head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 24px; }
+.tracker__title { margin-top: 8px; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.05; letter-spacing: -0.02em; }
+.tracker__status {
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px 0 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07); box-shadow: inset 0 0 0 1px var(--line-2);
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+}
+.tracker__status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--fg-2); }
+.tracker__status[data-state="live"]::before { background: var(--flame); box-shadow: 0 0 0 0 rgba(255, 139, 61, 0.7); }
+@media (prefers-reduced-motion: no-preference) { .tracker__status[data-state="live"]::before { animation: pulse 2.2s infinite; } }
+.tracker__status[data-state="camp"]::before { background: var(--sun); }
+.tracker__status[data-state="finished"] { background: var(--grad); color: var(--ink); box-shadow: none; }
+.tracker__status[data-state="finished"]::before { background: var(--ink); }
+.tracker__pre { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.tracker__pre p { max-width: 62ch; color: var(--fg-2); }
+.tracker__pre .tracker__bib { color: var(--fg); font-weight: 600; }
+.tracker__pre .note__link { margin-top: 4px; }
+.tracker__live { display: flex; flex-direction: column; gap: 22px; }
+.tracker__km {
+  font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  font-size: clamp(3.6rem, 9vw, 7rem); line-height: 0.85; letter-spacing: -0.045em; font-variant-numeric: tabular-nums;
+}
+.tracker__km small { margin-left: 0.3em; font-family: var(--f-body); font-size: 0.17em; font-weight: 500; letter-spacing: 0; color: var(--fg-2); }
+.tracker__stages { display: flex; gap: 5px; }
+.tracker__stage { flex: var(--len) 1 0; min-width: 0; }
+.tracker__stage span { position: relative; display: block; height: 6px; overflow: hidden; border-radius: 6px; background: rgba(255, 255, 255, 0.12); }
+.tracker__stage span::after { content: ""; position: absolute; inset: 0; background: var(--grad); transform: scaleX(var(--fill, 0)); transform-origin: left; }
+.tracker__stage em { display: block; margin-top: 8px; font-style: normal; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2); }
+.tracker__stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 10px; margin: 0; }
+.tracker__stats > div { padding: 16px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--line); }
+.tracker__stats dt { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-2); }
+.tracker__stats dd { margin: 8px 0 0; font-family: var(--f-display); font-weight: 700; font-size: 1.4rem; line-height: 1.15; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.tracker__stats .tracker__sub { margin-top: 2px; font-family: var(--f-body); font-size: 0.85rem; font-weight: 500; color: var(--fg-2); }
+.tracker__links { display: flex; flex-wrap: wrap; gap: 10px; }
+.tracker__updated { font-size: 0.8rem; color: var(--fg-2); }
+
+/* ---------- 06 Give ---------- */
 .give { overflow: hidden; background: var(--bg); }
 .give__glow {
   position: absolute; inset: 0; pointer-events: none;
@@ -750,7 +824,7 @@ button { font: inherit; color: inherit; }
 .note__link:hover svg { transform: translateX(3px); }
 .note--share .btn { margin-top: auto; }
 
-/* ---------- 06 Follow ---------- */
+/* ---------- 07 Follow ---------- */
 .follow__big {
   display: flex; align-items: center; gap: 0.12em; width: fit-content; max-width: 100%;
   font-family: var(--f-display); font-weight: 800; font-stretch: 75%;

@@ -52,6 +52,7 @@
         <a href="#sharon">Sharon</a>
         <a href="#race">The Race</a>
         <a href="#runner">The Runner</a>
+        <a href="#raceday">Race Day</a>
         <a href="#give">Give</a>
       </nav>
       <div class="nav__km" aria-hidden="true" title="Kilometers read">
@@ -87,7 +88,7 @@
       <svg class="hero__dune hero__dune--front" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,342 C300,314 600,308 880,332 C1130,354 1300,328 1440,324 V400 H0Z"/></svg>
 
       <div class="hero__top">
-        <p class="chip"><span class="chip__dot" aria-hidden="true"></span>Marathon des Sables · April 2027</p>
+        <p class="chip"><span class="chip__dot" aria-hidden="true"></span>Marathon des Sables · <span data-countdown-to="2027-04-04T07:00:00+01:00" data-countdown-race="mds" data-countdown-format="days">April 2027</span></p>
         <p class="hero__lede">Running 250 kilometers across the Sahara in memory of my mom, and for the people who are still fighting.</p>
         <div class="hero__actions">
           <a class="btn btn--sun btn--lg" href="https://gofund.me/09f36297f" data-hero-cta>Give Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -140,7 +141,7 @@
         <div class="facts">
           <div class="fact" data-reveal>
             <p class="fact__label">Home</p>
-            <p class="fact__value">Windward Oʻahu, Hawaiʻi</p>
+            <p class="fact__value">Kaʻaʻawa, Hawaiʻi</p>
           </div>
           <div class="fact" data-reveal style="--d:80ms">
             <p class="fact__label">Work</p>
@@ -165,7 +166,7 @@
         <ol class="stack">
           <li class="stack__card" style="--i:0">
             <span class="stack__num" aria-hidden="true">01</span>
-            <p>Consistent exercise is the answer to mitigating much of the dysfunction that leads to disease.</p>
+            <p>Consistency with exercise can mitigate much of the dysfunction that leads to disease.</p>
           </li>
           <li class="stack__card" style="--i:1">
             <span class="stack__num" aria-hidden="true">02</span>
@@ -383,12 +384,77 @@
       </div>
     </section>
 
-    <!-- ============ 05 · GIVE ============ -->
+    <!-- ============ 05 · RACE DAY (countdowns + live tracking) ============ -->
+    <section class="section raceday" id="raceday" aria-labelledby="raceday-title">
+      <div class="wrap">
+        <p class="label" data-reveal><span>05</span>Race day</p>
+        <h2 class="display" id="raceday-title" data-reveal>The clock is <em>running.</em></h2>
+
+        <div class="clocks">
+          <article class="clock clock--main" data-countdown-to="2027-04-04T07:00:00+01:00" data-countdown-race="mds" data-zone="Africa/Casablanca" data-live-for="604800" data-reveal>
+            <p class="clock__eyebrow">The 250K · Marathon des Sables</p>
+            <div class="clock__digits" aria-hidden="true">
+            <div><b data-unit="d">174</b><span>days</span></div>
+            <div><b data-unit="h">00</b><span>hours</span></div>
+            <div><b data-unit="m">00</b><span>min</span></div>
+            <div><b data-unit="s">00</b><span>sec</span></div>
+          </div>
+            <p class="clock__live">Race underway. Follow along below.</p>
+            <p class="clock__when"><strong>Stage 1 · Sunday, April 4, 2027</strong><span><span data-clock-note>7:00 AM Sahara time (estimated)</span><span data-clock-local></span></span></p>
+          </article>
+          <article class="clock" data-countdown-to="2026-12-13T05:00:00-10:00" data-zone="Pacific/Honolulu" data-live-for="43200" data-hide-after="86400" data-reveal style="--d:100ms">
+            <p class="clock__eyebrow">Up next · Honolulu Marathon</p>
+            <div class="clock__digits" aria-hidden="true">
+            <div><b data-unit="d">62</b><span>days</span></div>
+            <div><b data-unit="h">00</b><span>hours</span></div>
+            <div><b data-unit="m">00</b><span>min</span></div>
+            <div><b data-unit="s">00</b><span>sec</span></div>
+          </div>
+            <p class="clock__live">Race day in Honolulu.</p>
+            <p class="clock__when"><strong>Sunday, December 13, 2026</strong><span><span>5:00 AM in Honolulu</span><span data-clock-local></span></span></p>
+          </article>
+        </div>
+
+        <!-- Live tracking: set data-bib once Jonyull's race number is assigned. -->
+        <article class="tracker" data-tracker data-tenant="marathondessables_2027" data-race="mds" data-year="2027" data-bib="" data-reveal>
+          <div class="tracker__head">
+            <div>
+              <p class="tile__label">Live tracking</p>
+              <h3 class="tracker__title">Follow every checkpoint</h3>
+            </div>
+            <span class="tracker__status" data-tracker-status data-state="idle">Opens on race day</span>
+          </div>
+
+          <div class="tracker__pre" data-tracker-pre>
+            <p>From the start of Stage 1, this panel follows Jonyull through the Sahara: his kilometer, last checkpoint, race time and overall rank, refreshed every minute from the official race tracker.</p>
+            <p class="tracker__bib" data-tracker-bib>Bib number announced closer to race week.</p>
+            <a class="note__link" href="https://marathondessables.v3.livetrail.net/en/2026/races/mds" target="_blank" rel="noopener" data-tracker-home>See last year’s race on the official tracker <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+
+          <div class="tracker__live" data-tracker-live hidden>
+            <p class="tracker__km"><span data-t-km>0</span><small>km of <span data-t-total>250</span></small></p>
+            <div class="tracker__stages" data-t-stages aria-hidden="true"></div>
+            <dl class="tracker__stats">
+              <div><dt>Last checkpoint</dt><dd data-t-point>–</dd><dd class="tracker__sub" data-t-ago></dd></div>
+              <div><dt>Race time</dt><dd data-t-time>–</dd></div>
+              <div><dt>Overall rank</dt><dd data-t-rank>–</dd></div>
+            </dl>
+            <div class="tracker__links">
+              <a class="btn btn--glass" data-t-runner href="https://marathondessables.v3.livetrail.net/" target="_blank" rel="noopener">Open full tracker <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="btn btn--glass" data-t-gps href="https://marathondessables.v3.livetrail.net/" target="_blank" rel="noopener" hidden>Live GPS map <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
+            <p class="tracker__updated" data-t-updated></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 06 · GIVE ============ -->
     <section class="section give" id="give" aria-labelledby="give-title" data-hide-give-bar>
       <div class="give__glow" aria-hidden="true"></div>
       <div class="wrap">
         <header class="give__head">
-          <p class="label label--center" data-reveal><span>05</span>How to give</p>
+          <p class="label label--center" data-reveal><span>06</span>How to give</p>
           <h2 class="display display--center" id="give-title" data-reveal>Run the 250K <em>with us.</em></h2>
           <p class="lead" data-reveal>Every gift supports cancer rehabilitation care for people who are fighting for their strength and their agency. Pick a pace, priced by the kilometer.</p>
         </header>
@@ -435,10 +501,10 @@
       </div>
     </section>
 
-    <!-- ============ 06 · FOLLOW ============ -->
+    <!-- ============ 07 · FOLLOW ============ -->
     <section class="section follow" id="follow" aria-labelledby="follow-title">
       <div class="wrap">
-        <p class="label" data-reveal><span>06</span>Follow along</p>
+        <p class="label" data-reveal><span>07</span>Follow along</p>
         <h2 class="visually-hidden" id="follow-title">Follow along</h2>
         <a class="follow__big" href="https://www.instagram.com/250kwithmrsk/" target="_blank" rel="noopener" data-reveal>@250KwithMrsK<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <p class="lead follow__lead" data-reveal>Training blocks, gear tests, long runs, and race week, as it happens.</p>

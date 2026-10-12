@@ -258,6 +258,177 @@
     el.hidden = false;
   });
 
+  // ---------- Race clocks ----------
+  // Anything with data-countdown-to counts down to that instant. Clock cards tick d/h/m/s;
+  // data-countdown-format="days" renders "N days to go". The Sahara start is estimated from
+  // last year's 7:00 AM Stage 1 until LiveTrail publishes the official 2027 start (below).
+  const clockEls = $$('[data-countdown-to]');
+  const pad2 = (n) => String(n).padStart(2, '0');
+  const viewerZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const localTime = new Intl.DateTimeFormat(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+  const showLocalTimes = () => clockEls.forEach((el) => {
+    const local = $('[data-clock-local]', el);
+    if (local && el.dataset.zone !== viewerZone) local.textContent = `Your time: ${localTime.format(new Date(el.dataset.countdownTo))}`;
+  });
+  const renderClocks = () => {
+    const now = Date.now();
+    clockEls.forEach((el) => {
+      const diff = Date.parse(el.dataset.countdownTo) - now;
+      if (el.dataset.countdownFormat === 'days') {
+        el.dataset.fallback ??= el.textContent;
+        const days = Math.floor(diff / 864e5);
+        const hours = Math.max(1, Math.floor(diff / 36e5));
+        el.textContent = diff > 864e5 ? `${days} ${days === 1 ? 'day' : 'days'} to go`
+          : diff > 0 ? `${hours} ${hours === 1 ? 'hour' : 'hours'} to go`
+          : diff > -7 * 864e5 ? 'race underway' : el.dataset.fallback;
+        return;
+      }
+      const hideAfter = Number(el.dataset.hideAfter || 0) * 1000;
+      if (hideAfter && diff < -hideAfter) { el.hidden = true; return; }
+      const liveFor = Number(el.dataset.liveFor || 0) * 1000;
+      el.classList.toggle('is-live', diff <= 0);
+      if (diff <= -liveFor) $('.clock__live', el).textContent = 'This race has finished.';
+      const t = Math.max(0, diff);
+      $('[data-unit="d"]', el).textContent = Math.floor(t / 864e5);
+      $('[data-unit="h"]', el).textContent = pad2(Math.floor(t / 36e5) % 24);
+      $('[data-unit="m"]', el).textContent = pad2(Math.floor(t / 6e4) % 60);
+      $('[data-unit="s"]', el).textContent = pad2(Math.floor(t / 1e3) % 60);
+    });
+  };
+  showLocalTimes();
+  renderClocks();
+  setInterval(renderClocks, 1000);
+
+  // ---------- Live tracking (LiveTrail, the official race tracker) ----------
+  // Before the race, or until data-bib is set, the panel stays in its "race week" state.
+  // ?tracker-preview=2026-791 previews the live panel with a runner from last year's race.
+  const API = 'https://api.v3.livetrail.net/api/events';
+  const lt = (path, tenant) => fetch(`${API}/${path}`, { headers: { 'X-Tenant': tenant } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`LiveTrail ${r.status}`))));
+  const tracker = $('[data-tracker]');
+  if (tracker) {
+    // Official start time, once LiveTrail publishes this year's race (checked in the final 60 days).
+    const estimatedStart = Date.parse($('[data-countdown-race]')?.dataset.countdownTo);
+    const nearStart = estimatedStart - Date.now() < 60 * 864e5;
+    (nearStart ? lt('races/summaries', tracker.dataset.tenant) : Promise.reject()).then((races) => {
+      const race = races.find((r) => r.raceId === tracker.dataset.race);
+      if (!race?.startDate) return;
+      const start = new Date(race.startDate);
+      const sahara = (opts) => new Intl.DateTimeFormat('en-US', { timeZone: 'Africa/Casablanca', ...opts }).format(start);
+      $$(`[data-countdown-race="${race.raceId}"]`).forEach((el) => { el.dataset.countdownTo = race.startDate; });
+      $$('[data-clock-note]').forEach((el) => {
+        el.textContent = `${sahara({ hour: 'numeric', minute: '2-digit' })} Sahara time`;
+        el.closest('.clock__when').querySelector('strong').textContent = `Stage 1 · ${sahara({ weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
+      });
+      showLocalTimes();
+      renderClocks();
+    }).catch(() => {});
+
+    let { tenant, race, year, bib } = tracker.dataset;
+    const preview = new URLSearchParams(location.search).get('tracker-preview');
+    if (preview && /^\d{4}-\d+$/.test(preview)) {
+      [year, bib] = preview.split('-');
+      tenant = `marathondessables_${year}`;
+    }
+    if (bib) {
+      const statusEl = $('[data-tracker-status]', tracker);
+      const setStatus = (state, text) => { statusEl.dataset.state = state; statusEl.textContent = text; };
+      const runnerUrl = `https://marathondessables.v3.livetrail.net/en/${year}/runners/${bib}`;
+      $('[data-tracker-bib]', tracker).textContent = preview ? `Preview: runner #${bib} from the ${year} race` : `Jonyull’s bib: #${bib}`;
+      $('[data-t-runner]', tracker).href = runnerUrl;
+
+      const pointLabel = (pt) => {
+        const m = /^S(\d+) (START|FINISH|CP\d+)$/.exec(pt.shortName || '');
+        if (!m) return pt.name;
+        return m[2] === 'START' ? `Stage ${m[1]} start` : m[2] === 'FINISH' ? `Stage ${m[1]} finish` : `Stage ${m[1]} · ${m[2]}`;
+      };
+      const ago = (iso) => {
+        const mins = Math.round((Date.now() - Date.parse(iso)) / 6e4);
+        if (mins < 1) return 'just now';
+        if (mins < 60) return `${mins} min ago`;
+        if (mins < 24 * 60) return `${Math.floor(mins / 60)}h ${pad2(mins % 60)}m ago`;
+        return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }).format(new Date(iso));
+      };
+      const clockTime = (secs) => `${Math.floor(secs / 3600)}:${pad2(Math.floor(secs / 60) % 60)}:${pad2(secs % 60)}`;
+
+      let raceInfo, points, stages, timer, resumeOnVisible = false;
+      const schedule = (ms) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => (document.hidden ? (resumeOnVisible = true) : load()), ms);
+      };
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && resumeOnVisible) { resumeOnVisible = false; load(); }
+      });
+
+      const buildStages = () => {
+        const bounds = {};
+        points.forEach((pt) => {
+          const m = /^S(\d+) (START|FINISH)$/.exec(pt.shortName || '');
+          if (m) (bounds[m[1]] ??= {})[m[2] === 'START' ? 'start' : 'end'] = pt.distance / 1000;
+        });
+        const wrap = $('[data-t-stages]', tracker);
+        stages = Object.keys(bounds).sort((a, b) => a - b).filter((n) => bounds[n].end > bounds[n].start).map((n) => {
+          const seg = document.createElement('div');
+          seg.className = 'tracker__stage';
+          seg.style.setProperty('--len', (bounds[n].end - bounds[n].start).toFixed(1));
+          const bar = document.createElement('span');
+          const label = document.createElement('em');
+          label.textContent = `S${n}`;
+          seg.append(bar, label);
+          wrap.append(seg);
+          return { ...bounds[n], bar };
+        });
+      };
+
+      const render = (runner) => {
+        const byId = new Map(points.map((pt) => [pt.pointId, pt]));
+        const total = Math.max(raceInfo.distance || 0, ...points.map((pt) => pt.distance)) / 1000;
+        const last = runner.lastPassage ? byId.get(runner.lastPassage.pointId) : null;
+        const km = last ? last.distance / 1000 : 0;
+        $('[data-t-km]', tracker).textContent = km ? km.toFixed(1) : '0';
+        $('[data-t-total]', tracker).textContent = Math.round(total);
+        stages.forEach((s) => s.bar.style.setProperty('--fill', clamp((km - s.start) / (s.end - s.start)).toFixed(3)));
+        $('[data-t-point]', tracker).textContent = last ? pointLabel(last) : 'Not started yet';
+        $('[data-t-ago]', tracker).textContent = last && runner.lastPassage.dateTime ? ago(runner.lastPassage.dateTime) : '';
+        $('[data-t-time]', tracker).textContent = runner.raceTime ? clockTime(runner.raceTime) : '–';
+        const rank = runner.ranking;
+        $('[data-t-rank]', tracker).textContent = rank?.scratch ? `#${rank.scratch.toLocaleString('en-US')} of ${rank.scratchTotal.toLocaleString('en-US')}` : '–';
+        const gps = raceInfo.gpsIframe?.url;
+        const gpsLink = $('[data-t-gps]', tracker);
+        if (gps) { gpsLink.href = gps; gpsLink.hidden = false; }
+
+        const status = runner.status;
+        if (status === 'FINISHER') setStatus('finished', 'Finisher');
+        else if (['WITHDRAWN', 'DISQUALIFIED', 'STOPPED'].includes(status)) setStatus('out', 'Withdrawn');
+        else if (['DID_NOT_START', 'DNS'].includes(status)) setStatus('out', 'Did not start');
+        else if (!runner.lastPassage) setStatus('idle', 'Not started yet');
+        else if (/FINISH$/.test(last?.shortName || '')) setStatus('camp', 'At the bivouac');
+        else setStatus('live', 'Live · on course');
+
+        $('[data-t-updated]', tracker).textContent = `Updated ${new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' }).format(new Date())} from LiveTrail, the official race tracker.`;
+        $('[data-tracker-pre]', tracker).hidden = true;
+        $('[data-tracker-live]', tracker).hidden = false;
+      };
+
+      const load = async () => {
+        try {
+          if (!points) {
+            [raceInfo, points] = await Promise.all([lt(`races/${race}`, tenant), lt(`points?raceId=${race}`, tenant)]);
+            buildStages();
+          }
+          const runner = await lt(`runners/${bib}`, tenant);
+          render(runner);
+          const over = raceInfo.status === 'FINISHED' || ['FINISHER', 'WITHDRAWN', 'DISQUALIFIED', 'STOPPED', 'DID_NOT_START', 'DNS'].includes(runner.status);
+          if (!over) schedule(60_000);
+        } catch {
+          // Not published yet (pre-race) keeps the race-week panel; a blip mid-race retries.
+          if (points) schedule(120_000);
+        }
+      };
+      load();
+    }
+  }
+
   // ---------- Giving picker ----------
   const picker = $('[data-picker]');
   if (picker && !reduceMotion) {
