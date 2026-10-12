@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>250K with Mrs. K — Running the Sahara in memory of Sharon</title>
+  <meta name="description" content="Jonyull Kosinski is running the 250 km Marathon des Sables across the Sahara in April 2027 in memory of his mom, Sharon, and raising money for cancer rehabilitation care.">
+  <link rel="canonical" href="https://ryanlazar.dev/250k/">
+  <meta name="theme-color" content="#0b0a13">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ryanlazar.dev/250k/">
+  <meta property="og:site_name" content="250K with Mrs. K">
+  <meta property="og:title" content="250K with Mrs. K">
+  <meta property="og:description" content="Running 250 kilometers across the Sahara in memory of my mom, and for the people who are still fighting. Marathon des Sables · April 2027.">
+  <meta property="og:image" content="https://ryanlazar.dev/250k/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="250K with Mrs. K: a sun setting over Sahara dunes. Marathon des Sables, April 2027.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="250K with Mrs. K">
+  <meta name="twitter:description" content="Running 250 kilometers across the Sahara in memory of my mom, and for the people who are still fighting.">
+  <meta name="twitter:image" content="https://ryanlazar.dev/250k/og-image.png">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to the story</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" data-nav>
+    <div class="nav__pill">
+      <a class="nav__brand" href="#top" aria-label="250K with Mrs. K, back to top">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <defs><linearGradient id="markSun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a6"/><stop offset="1" stop-color="#ff9446"/></linearGradient></defs>
+          <circle cx="17" cy="14" r="8" fill="url(#markSun)"/>
+          <path d="M0 22c6-4 11-5 17-3s10 2 15-1v14H0z" fill="#ff5a3c"/>
+        </svg>
+        <span>250K <i>with</i> Mrs.&nbsp;K</span>
+      </a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#story">Story</a>
+        <a href="#sharon">Sharon</a>
+        <a href="#race">The Race</a>
+        <a href="#runner">The Runner</a>
+        <a href="#give">Give</a>
+      </nav>
+      <div class="nav__km" aria-hidden="true" title="Kilometers read">
+        <svg viewBox="0 0 40 40"><circle class="nav__km-track" cx="20" cy="20" r="17" pathLength="100"/><circle class="nav__km-fill" cx="20" cy="20" r="17" pathLength="100" data-km-ring/></svg>
+        <span><b data-km>0</b>km</span>
+      </div>
+      <a class="btn btn--sun btn--sm nav__give" href="https://gofund.me/09f36297f">Give</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" data-hero aria-labelledby="hero-title">
+      <div class="hero__sky" aria-hidden="true"></div>
+      <div class="hero__stars" data-stars="90" aria-hidden="true"></div>
+      <div class="hero__sun" aria-hidden="true"></div>
+      <!-- Optional: drop a muted loop at media/hero.mp4 and it plays behind the title. -->
+      <video class="hero__video" data-hero-video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="media/hero.mp4" type="video/mp4">
+      </video>
+
+      <svg class="hero__dune hero__dune--far" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,170 C200,130 380,120 560,150 C740,180 900,110 1100,104 C1260,100 1360,140 1440,130 V400 H0Z"/></svg>
+      <svg class="hero__dune hero__dune--mid" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,232 C220,192 420,184 640,216 C860,248 1020,188 1220,182 C1330,179 1400,198 1440,206 V400 H0Z"/></svg>
+
+      <div class="hero__lockup">
+        <h1 class="hero__title" id="hero-title">
+          <span class="visually-hidden">250K with Mrs. K</span>
+          <span class="hero__num" aria-hidden="true"><span style="--i:0">2</span><span style="--i:1">5</span><span style="--i:2">0</span><span style="--i:3">K</span></span>
+          <span class="hero__with" aria-hidden="true">with Mrs.&nbsp;K</span>
+        </h1>
+      </div>
+
+      <svg class="hero__dune hero__dune--near" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,300 C240,262 470,252 720,284 C960,314 1150,268 1440,262 V400 H0Z"/>
+        <path class="hero__route" d="M0,294 C240,256 470,246 720,278 C960,308 1150,262 1440,256"/>
+      </svg>
+      <svg class="hero__dune hero__dune--front" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,342 C300,314 600,308 880,332 C1130,354 1300,328 1440,324 V400 H0Z"/></svg>
+
+      <div class="hero__top">
+        <p class="chip"><span class="chip__dot" aria-hidden="true"></span>Marathon des Sables · April 2027</p>
+        <p class="hero__lede">Running 250 kilometers across the Sahara in memory of my mom, and for the people who are still fighting.</p>
+        <div class="hero__actions">
+          <a class="btn btn--sun btn--lg" href="https://gofund.me/09f36297f" data-hero-cta>Give Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--glass btn--lg" href="#story">Read the story</a>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <p class="hero__dedication">In memory of Sharon Gwendolyn Kosinski</p>
+        <a class="hero__scroll" href="#story" aria-label="Scroll to the story"><span>Scroll</span><i aria-hidden="true"></i></a>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__band">
+        <div class="marquee__track">
+          <span>250 kilometers</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>Sahara Desert</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>Self-supported</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>110°F+</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>For Mrs. K</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>April 2027</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          <span>#250KwithMrsK</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 01 · THE STORY ============ -->
+    <section class="section story" id="story" aria-labelledby="story-title">
+      <div class="wrap">
+        <p class="label" data-reveal><span>01</span>The story</p>
+        <h2 class="display" id="story-title" data-reveal>Hi, I’m <em>Jonyull.</em></h2>
+
+        <p class="statement" data-words>I’m a health and human performance coach on the Windward side of Oʻahu, and I’ve built my career around one idea: the body and mind can do far more than people think when they’re trained with a plan and with care.</p>
+
+        <div class="story__turn">
+          <p class="pivot" data-reveal>In August 2024 I lost my mom, Sharon Gwendolyn Kosinski, to laryngeal cancer.</p>
+          <p class="story__body" data-reveal style="--d:120ms">In April 2027 I’ll line up at the start of the Marathon des Sables: 250 kilometers across the Sahara Desert, self-supported, carrying everything I need on my back. I’m running it with her, and I’m raising money to support cancer rehabilitation care for people who are fighting for their strength and their agency.</p>
+        </div>
+
+        <div class="facts">
+          <!-- Optional: drop a portrait at images/jonyull.jpg and it becomes the first tile. -->
+          <figure class="fact fact--photo" data-photo-slot data-photo data-reveal>
+            <img src="images/jonyull.jpg" alt="Jonyull Kosinski" width="800" height="1000" decoding="async">
+          </figure>
+          <div class="fact" data-reveal>
+            <p class="fact__label">Home</p>
+            <p class="fact__value">Windward Oʻahu, Hawaiʻi</p>
+          </div>
+          <div class="fact" data-reveal style="--d:80ms">
+            <p class="fact__label">Work</p>
+            <p class="fact__value">Health &amp; human performance coach</p>
+          </div>
+          <div class="fact" data-reveal style="--d:160ms">
+            <p class="fact__label">Who I coach</p>
+            <p class="fact__value">Athletes, youth, and high performers across diverse backgrounds</p>
+          </div>
+          <div class="fact fact--accent" data-reveal style="--d:240ms">
+            <p class="fact__label">Running for</p>
+            <p class="fact__value">My mom, and cancer rehabilitation care</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT I BELIEVE ============ -->
+    <section class="section beliefs" aria-labelledby="beliefs-title">
+      <div class="wrap">
+        <h2 class="display display--md" id="beliefs-title" data-reveal>What I <em>believe.</em></h2>
+        <ol class="stack">
+          <li class="stack__card" style="--i:0">
+            <span class="stack__num" aria-hidden="true">01</span>
+            <p>Consistent exercise is the answer to mitigating much of the dysfunction that leads to disease.</p>
+          </li>
+          <li class="stack__card" style="--i:1">
+            <span class="stack__num" aria-hidden="true">02</span>
+            <p>Challenging things are far more worth doing when they’re done for someone other than yourself.</p>
+          </li>
+          <li class="stack__card" style="--i:2">
+            <span class="stack__num" aria-hidden="true">03</span>
+            <p>Showing up in small increments, consistently, matters more than any single big day.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 02 · SHARON ============ -->
+    <section class="section sharon" id="sharon" aria-labelledby="sharon-title">
+      <div class="sharon__stars" data-stars="110" aria-hidden="true"></div>
+      <div class="wrap sharon__wrap">
+        <p class="label label--center" data-reveal><span>02</span>Why I’m running</p>
+
+        <div class="sharon__portrait" data-photo-slot data-reveal>
+          <!-- Optional: drop a photo of Sharon at images/sharon.jpg and it replaces the moon. -->
+          <figure class="sharon__photo" data-photo>
+            <img src="images/sharon.jpg" alt="Sharon Gwendolyn Kosinski" width="800" height="1000" decoding="async">
+          </figure>
+          <div class="sharon__moon" aria-hidden="true"></div>
+        </div>
+
+        <h2 class="sharon__title" id="sharon-title" data-reveal>Running with <em>Mrs.&nbsp;K.</em></h2>
+        <p class="sharon__name" data-reveal>Sharon Gwendolyn Kosinski · Mom</p>
+
+        <div class="sharon__tribute" data-words>
+          <p>My mom was, and still is, a superhero in our family. Not because of our loss of her to disease; because of her impact, her presence, and her ability to problem-solve anything in her path, for us and for herself.</p>
+          <p>She taught me how to stand up for myself, how to grow through pain points, and to never take no for an answer. The magic she created with her heart and soul lives on in my sisters and me.</p>
+          <p>I know she would be proud, and that’s why she’s running in the desert with me.</p>
+        </div>
+      </div>
+
+      <div class="wrap moment">
+        <p class="label label--center" data-reveal>What this moment is for</p>
+        <blockquote class="moment__quote" data-reveal>
+          <p>This race is the hardest, most involved event I’ve ever signed up for, and I wanted the reason to be bigger than me. <em>Every kilometer is for Sharon and for the families still in the middle of it.</em></p>
+        </blockquote>
+        <a class="btn btn--sun btn--lg" href="https://gofund.me/09f36297f" data-reveal>Give in Sharon’s memory <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ============ 03 · THE RACE (scroll-pinned journey) ============ -->
+    <section class="race" id="race" data-race data-phase="0" aria-labelledby="race-title">
+      <div class="race__sticky">
+        <div class="race__skies" aria-hidden="true">
+          <div class="sky sky--0"></div>
+          <div class="sky sky--1"></div>
+          <div class="sky sky--2"></div>
+          <div class="sky sky--3"><div class="sky__stars" data-stars="80"></div></div>
+          <div class="sky sky--4"></div>
+        </div>
+
+        <div class="race__bars wrap" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+
+        <div class="race__inner wrap">
+          <header class="race__head">
+            <p class="label"><span>03</span>The race</p>
+            <h2 class="race__title" id="race-title">Marathon des Sables</h2>
+            <p class="race__where">Sahara Desert, Morocco · April 2027</p>
+          </header>
+
+          <p class="race__km" aria-hidden="true"><span data-race-km>250</span><small>km</small></p>
+
+          <ol class="race__facts">
+            <li class="race__fact">
+              <strong>~250 km</strong>
+              <p>A multi-stage footrace across the Sahara Desert in Morocco.</p>
+            </li>
+            <li class="race__fact">
+              <strong>Self-supported</strong>
+              <p>Runners carry all their own food and gear. Everything I need, on my back.</p>
+            </li>
+            <li class="race__fact">
+              <strong>110°F+</strong>
+              <p>Temperatures regularly top 110°F.</p>
+            </li>
+            <li class="race__fact">
+              <strong>100+ km</strong>
+              <p>The longest stage, run through the night.</p>
+            </li>
+            <li class="race__fact">
+              <strong>The finish</strong>
+              <p>It’s widely considered one of the toughest footraces on Earth.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="race__route" aria-hidden="true">
+          <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+            <path class="route__ground" d="M0,120 C140,80 260,70 380,98 C500,126 600,64 740,60 C860,57 930,96 1000,88 L1000,200 L0,200 Z"/>
+            <path class="route__ghost" pathLength="1" d="M0,114 C140,74 260,64 380,92 C500,120 600,58 740,54 C860,51 930,90 1000,82"/>
+            <path class="route__line" pathLength="1" d="M0,114 C140,74 260,64 380,92 C500,120 600,58 740,54 C860,51 930,90 1000,82" data-route/>
+          </svg>
+          <span class="race__dot" data-route-dot></span>
+          <div class="race__ends wrap"><span>Start · km 0</span><span>Finish · km 250</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · THE RUNNER (bento) ============ -->
+    <section class="section runner" id="runner" aria-labelledby="runner-title">
+      <div class="wrap">
+        <p class="label" data-reveal><span>04</span>The runner</p>
+        <h2 class="display" id="runner-title" data-reveal>Built for <em>this.</em></h2>
+        <p class="lead runner__lead" data-reveal>I’ve spent my career studying and coaching human performance, including a year of research in cancer exercise rehabilitation. Here’s what I’m bringing to the start line.</p>
+
+        <div class="bento" data-spotlight>
+          <article class="tile tile--vo2" data-reveal>
+            <p class="tile__label">VO₂ max · lab-tested</p>
+            <div class="gauge">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd07a"/><stop offset=".5" stop-color="#ff9446"/><stop offset="1" stop-color="#ff5a3c"/></linearGradient></defs>
+                <circle class="gauge__track" cx="100" cy="100" r="86" pathLength="100"/>
+                <circle class="gauge__fill" cx="100" cy="100" r="86" pathLength="100"/>
+              </svg>
+              <p class="gauge__value"><span data-count="60.5" data-decimals="1">60.5</span><small>mL/kg/min</small></p>
+            </div>
+            <p class="tile__note"><b>99th percentile</b> for age and sex. Tested September 21, 2026.</p>
+          </article>
+
+          <article class="tile tile--fat" data-reveal style="--d:80ms">
+            <p class="tile__label">Body fat · DEXA scan</p>
+            <p class="tile__big"><span data-count="9.2" data-decimals="1">9.2</span><small>%</small></p>
+            <p class="tile__note">DEXA body composition. Tested September 11, 2026.</p>
+          </article>
+
+          <article class="tile tile--rsch" data-reveal style="--d:160ms">
+            <p class="tile__label">Research</p>
+            <p class="tile__big">1<small>yr</small></p>
+            <p class="tile__note"><b>Exercise physiology in oncology</b>, focused on cancer exercise rehabilitation.</p>
+          </article>
+
+          <article class="tile tile--next" data-reveal style="--d:120ms">
+            <p class="tile__label">Up next</p>
+            <ol class="next">
+              <li>
+                <time datetime="2026-12-13">December 13, 2026</time>
+                <strong>Honolulu Marathon</strong>
+                <span>Back on the start line again.</span>
+                <em class="countdown" data-countdown="2026-12-13" hidden></em>
+              </li>
+              <li>
+                <time datetime="2027-04">April 2027</time>
+                <strong>Marathon des Sables</strong>
+                <span>250 km across the Sahara, with Mrs. K.</span>
+                <em class="countdown" data-months="2027-04" hidden></em>
+              </li>
+            </ol>
+          </article>
+
+          <article class="tile tile--res" data-reveal>
+            <div class="res__head">
+              <div>
+                <p class="tile__label">Race résumé</p>
+                <p class="res__total"><span data-count="36">36</span>+ <small>races &amp; competitions</small></p>
+              </div>
+              <p class="tile__note">Approximate. There have been a lot of them.</p>
+            </div>
+            <ul class="res">
+              <li><b>3</b><span>Ironman 70.3</span></li>
+              <li><b>3</b><span>Marathons</span></li>
+              <li><b>3</b><span>Ultramarathons</span></li>
+              <li><b>5</b><span>GoRuck events, 6 to 48 hours</span></li>
+              <li><b>10+</b><span>5K to half marathon</span></li>
+              <li><b>10+</b><span>Obstacle races</span></li>
+              <li><b>2</b><span>Bodybuilding competitions</span></li>
+            </ul>
+          </article>
+
+          <article class="tile tile--edu" data-reveal>
+            <p class="tile__label">Education</p>
+            <ul class="list">
+              <li><b>MS, Sport Science: Sport Psychology</b><span>Lock Haven University</span></li>
+              <li><b>BS, Athletic Training</b><span>Lock Haven University</span></li>
+            </ul>
+          </article>
+
+          <article class="tile tile--cert" data-reveal style="--d:80ms">
+            <p class="tile__label">Certifications &amp; licensure</p>
+            <ul class="list list--grid">
+              <li><b>Certified Athletic Trainer</b><span>Board of Certification (BOC)</span></li>
+              <li><b>Certified Strength and Conditioning Specialist</b><span>National Strength and Conditioning Association (NSCA)</span></li>
+              <li><b>Level 1 Certification (CCES-L1)</b><span>University of Northern Colorado Cancer Rehabilitation Institute</span></li>
+              <li><b>State-licensed athletic trainer</b><span>Pennsylvania and Hawaiʻi</span></li>
+            </ul>
+          </article>
+
+          <article class="tile tile--work" data-reveal style="--d:160ms">
+            <p class="tile__label">Professional experience</p>
+            <ul class="list">
+              <li><b>Founder, CCJ: Concierge Coaching by Jonyull, LLC</b><span>A concierge coaching and human performance practice on Oʻahu, Hawaiʻi. Coaching and nutrition practitioner.</span></li>
+              <li><b>Graduate Assistant, Cancer Rehabilitation</b><span>2017</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · GIVE ============ -->
+    <section class="section give" id="give" aria-labelledby="give-title" data-hide-give-bar>
+      <div class="give__glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="give__head">
+          <p class="label label--center" data-reveal><span>05</span>How to give</p>
+          <h2 class="display display--center" id="give-title" data-reveal>Run the 250K <em>with us.</em></h2>
+          <p class="lead" data-reveal>Every gift supports cancer rehabilitation care for people who are fighting for their strength and their agency. Pick a pace, priced by the kilometer.</p>
+        </header>
+
+        <div class="picker" data-picker data-reveal>
+          <fieldset class="picker__seg">
+            <legend class="visually-hidden">Choose a giving pace</legend>
+            <input type="radio" name="pace" id="pace-1" value="250" checked>
+            <label for="pace-1"><b>Sand Supporter</b><span>$1 / km</span></label>
+            <input type="radio" name="pace" id="pace-2" value="1250">
+            <label for="pace-2"><b>Dune Backer</b><span>$5 / km</span></label>
+            <input type="radio" name="pace" id="pace-3" value="2500">
+            <label for="pace-3"><b>Desert Champion</b><span>$10 / km</span></label>
+          </fieldset>
+
+          <div class="picker__stage" aria-live="polite">
+            <div class="picker__view picker__view--1"><p class="picker__amount" data-amount="250">$250</p><p class="picker__math">$1 a kilometer × 250 km</p></div>
+            <div class="picker__view picker__view--2"><p class="picker__amount" data-amount="1250">$1,250</p><p class="picker__math">$5 a kilometer × 250 km</p></div>
+            <div class="picker__view picker__view--3"><p class="picker__amount" data-amount="2500">$2,500</p><p class="picker__math">$10 a kilometer × 250 km</p></div>
+            <div class="picker__suns" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+          <a class="btn btn--sun btn--xl picker__cta" href="https://gofund.me/09f36297f">Continue to GoFundMe <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="picker__hint">You’ll enter your amount on GoFundMe. Any amount helps; every kilometer counts.</p>
+        </div>
+
+        <div class="give__grid">
+          <article class="note" data-reveal>
+            <h3>Where your gift goes</h3>
+            <p>Every gift supports cancer rehabilitation care. This is a personal fundraiser, not a registered charity, so gifts are not tax-deductible. Gifts are one-time and flat; there’s nothing to pay after the race.</p>
+          </article>
+          <article class="note" data-reveal style="--d:80ms">
+            <h3>For companies</h3>
+            <p>Interested in sponsoring the run? I’d love to talk. Because this is a personal fundraiser, corporate gifts generally aren’t tax-deductible.</p>
+            <!-- TODO: swap this for a sponsor email, e.g. href="mailto:you@example.com", once Jonyull picks one. -->
+            <a class="note__link" href="https://www.instagram.com/250kwithmrsk/" target="_blank" rel="noopener">Start a sponsorship conversation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="note note--share" data-reveal style="--d:160ms">
+            <h3>Can’t give right now?</h3>
+            <p>Share the run. Every share helps more people find it.</p>
+            <button class="btn btn--glass" type="button" data-share>Share the run <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · FOLLOW ============ -->
+    <section class="section follow" id="follow" aria-labelledby="follow-title">
+      <div class="wrap">
+        <p class="label" data-reveal><span>06</span>Follow along</p>
+        <h2 class="visually-hidden" id="follow-title">Follow along</h2>
+        <a class="follow__big" href="https://www.instagram.com/250kwithmrsk/" target="_blank" rel="noopener" data-reveal>@250KwithMrsK<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <p class="lead follow__lead" data-reveal>Training blocks, gear tests, long runs, and race week, as it happens.</p>
+        <ul class="follow__links" data-reveal>
+          <li><a href="https://www.instagram.com/250kwithmrsk/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" class="fill"/></svg>Instagram</a></li>
+          <li><a href="https://www.facebook.com/250KwithMrsK" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M14.5 8.5h2.5V5h-2.5C12 5 10.5 6.6 10.5 9v2.5H8V15h2.5v6H14v-6h2.6l.4-3.5h-3V9.4c0-.6.3-.9.5-.9z"/></svg>Facebook</a></li>
+          <li><a href="https://www.instagram.com/jonyullfit/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 4-6.5 8-6.5s7.2 2.5 8 6.5"/></svg>@jonyullfit</a></li>
+          <li><a href="https://www.instagram.com/explore/tags/250kwithmrsk/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 3.5 7.5 20.5M16.5 3.5l-2 17M4 8.5h17M3 15.5h17"/></svg>#250KwithMrsK</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" data-hide-give-bar>
+    <div class="wrap footer__top">
+      <p class="footer__line" data-reveal>250 kilometers. One pack.</p>
+      <div class="footer__actions" data-reveal style="--d:100ms">
+        <a class="btn btn--sun btn--lg" href="https://gofund.me/09f36297f">Give on GoFundMe <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button class="btn btn--glass btn--lg" type="button" data-share>Share <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
+      </div>
+    </div>
+    <div class="footer__giant" aria-hidden="true">
+      <div class="footer__sun"></div>
+      <p>For Mrs.&nbsp;K</p>
+    </div>
+    <div class="wrap footer__fine">
+      <p>250K with Mrs. K is a personal fundraiser by Jonyull Kosinski. It is not a registered charity, and gifts are not tax-deductible.</p>
+      <p>#250KwithMrsK · © 2026</p>
+    </div>
+  </footer>
+
+  <!-- Mobile dock -->
+  <div class="dock" data-give-bar>
+    <a class="btn btn--sun dock__give" href="https://gofund.me/09f36297f">Give on GoFundMe</a>
+    <button class="dock__share" type="button" data-share aria-label="Share this page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
+  </div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+</body>
+</html>
