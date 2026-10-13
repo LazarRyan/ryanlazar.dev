@@ -1,0 +1,3 @@
+# 250K with Mrs. K moved to its own domain; keep previously shared links working.
+/250k     https://250kwithmrsk.com/        301
+/250k/*   https://250kwithmrsk.com/:splat  301
